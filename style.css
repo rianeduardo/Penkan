@@ -1,0 +1,146 @@
+@import url('https://fonts.googleapis.com/css2?family=Fira+Code:wght@300..700&family=Lexend:wght@100..900&family=Orbitron:wght@400..900&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: #111;
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    min-height: 100vh;
+    font-family: 'Lexend', sans-serif;
+}
+
+/* Container principal dividido em dois */
+.containerLogin {
+    display: flex;
+    width: 100%;
+    max-width: 950px;
+    height: 550px;
+    border: 2px solid #0BE545;
+    border-radius: 20px;
+    overflow: hidden; /* Faz o corte da logo funcionar */
+}
+
+/* ================= LADO ESQUERDO (A LOGO CORTADA) ================= */
+.logoSide {
+    flex: 1;
+    background-color: #fff;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end; /* Empurra o texto "PENKAN" para a direita */
+    padding: 40px;
+    overflow: hidden;
+}
+
+.giantLogo {
+    position: absolute;
+    width: 130%; /* Força ela a ser maior que o container */
+    height: auto;
+    left: -45%;  /* Joga metade dela para fora da tela (esquerda) */
+    top: 50%;
+    transform: translateY(-50%);
+    pointer-events: none;
+}
+
+.logoText {
+    font-family: 'Orbitron', sans-serif;
+    font-size: 42px;
+    font-weight: 900;
+    color: #111;
+    letter-spacing: 2px;
+    z-index: 2; /* Garante que o texto fique acima do desenho da logo se eles cruzarem */
+}
+
+/* ================= LADO DIREITO (O FORMULÁRIO) ================= */
+.formSide {
+    flex: 1;
+    background-color: #111;
+    padding: 60px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 35px;
+}
+
+.formHeader h2 {
+    font-family: 'Lexend', sans-serif; /* Apenas Lexend aqui */
+    font-size: 26px;
+    font-weight: 600;
+    margin-bottom: 8px;
+}
+
+.formHeader p {
+    color: #666;
+    font-size: 14px;
+}
+
+.formSide form {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.formSide input {
+    width: 100%;
+    padding: 14px 16px;
+    border: 1px solid #222;
+    border-radius: 8px;
+    background-color: #1a1a1a;
+    color: white;
+    font-family: 'Lexend', sans-serif;
+    font-size: 15px;
+    transition: all 0.2s ease;
+}
+
+.formSide input::placeholder {
+    color: #555;
+}
+
+.formSide input:focus {
+    outline: none;
+    border-color: #0BE545;
+}
+
+/* Botão Verde Neon com texto em #111 para contraste */
+.formSide button {
+    width: 100%;
+    padding: 14px;
+    border: none;
+    border-radius: 8px;
+    background-color: #0BE545;
+    color: #111;
+    font-family: 'Lexend', sans-serif;
+    font-weight: 700;
+    font-size: 16px;
+    cursor: pointer;
+    margin-top: 10px;
+    transition: background-color 0.2s;
+}
+
+.formSide button:hover {
+    background-color: #09c43a;
+}
+
+.signupText {
+    font-size: 14px;
+    color: #666;
+    text-align: center;
+}
+
+.signupText a {
+    color: #0BE545;
+    text-decoration: none;
+    font-weight: 600;
+}
+
+.signupText a:hover {
+    text-decoration: underline;
+}
