@@ -1,294 +1,337 @@
-@import url('https://fonts.googleapis.com/css2?family=Fira+Code:wght@300..700&family=Lexend:wght@100..900&family=Orbitron:wght@400..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=JetBrains+Mono:ital,wght@0,100..800;1,100..800&display=swap');
+
+/*  Reset  Root e Gerais*/
 
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    font-family: 'Jetbrains Mono', monospace;
+}
+
+:root {
+    --cor-principal: #0BE545;
+    --bordas: #2E372B;
+    --texto: #DBE6D4;
+    --fundo: #111111;
 }
 
 body {
-    background-color: #111;
-    color: white;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-    min-height: 100vh;
-    font-family: 'Lexend', sans-serif;
+    background-color: var(--fundo);
+    color: var(--texto);
 }
 
-/* Container principal dividido em dois */
-.containerLogin {
-    display: flex;
-    width: 100%;
-    max-width: 950px;
-    height: 550px;
-    border: 2px solid #0BE545;
-    border-radius: 20px;
-    overflow: hidden;
-    /* Faz o corte da logo funcionar */
-}
+/* Estilos da header/footer (Components) */
 
-/* ================= LADO ESQUERDO (A LOGO CORTADA) ================= */
-.logoSide {
-    flex: 1;
-    background-color: #fff;
-    position: relative;
-    display: flex;
-    align-items: center;
-    justify-content: flex-end;
-    /* Empurra o texto "PENKAN" para a direita */
-    padding: 40px;
-    overflow: hidden;
-}
-
-.giantLogo {
-    position: absolute;
-    width: 130%;
-    /* Força ela a ser maior que o container */
-    height: auto;
-    left: -45%;
-    /* Joga metade dela para fora da tela (esquerda) */
-    top: 50%;
-    transform: translateY(-50%);
-    pointer-events: none;
-}
-
-.logoText {
-    font-family: 'Orbitron', sans-serif;
-    font-size: 42px;
-    font-weight: 900;
-    color: #111;
-    letter-spacing: 2px;
-    z-index: 2;
-    /* Garante que o texto fique acima do desenho da logo se eles cruzarem */
-}
-
-/* ================= LADO DIREITO (O FORMULÁRIO) ================= */
-.formSide {
-    flex: 1;
-    background-color: #111;
-    padding: 60px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    gap: 35px;
-}
-
-.formHeader h2 {
-    font-family: 'Lexend', sans-serif;
-    /* Apenas Lexend aqui */
-    font-size: 26px;
-    font-weight: 600;
-    margin-bottom: 8px;
-}
-
-.formHeader p {
-    color: #666;
-    font-size: 14px;
-}
-
-.formSide form {
-    display: flex;
-    flex-direction: column;
-    gap: 16px;
-}
-
-.formSide input {
-    width: 100%;
-    padding: 14px 16px;
-    border: 1px solid #222;
-    border-radius: 8px;
-    background-color: #1a1a1a;
-    color: white;
-    font-family: 'Lexend', sans-serif;
-    font-size: 15px;
-    transition: all 0.2s ease;
-}
-
-.formSide input::placeholder {
-    color: #555;
-}
-
-.formSide input:focus {
-    outline: none;
-    border-color: #0BE545;
-}
-
-/* Botão Verde Neon com texto em #111 para contraste */
-.formSide button {
-    width: 100%;
-    padding: 14px;
-    border: none;
-    border-radius: 8px;
-    background-color: #0BE545;
-    color: #111;
-    font-family: 'Lexend', sans-serif;
-    font-weight: 700;
-    font-size: 16px;
-    cursor: pointer;
-    margin-top: 10px;
-    transition: background-color 0.2s;
-}
-
-.formSide button:hover {
-    background-color: #09c43a;
-}
-
-.signupText {
-    font-size: 14px;
-    color: #666;
+header {
+    background-color: #000;
+    color: var(--texto);
+    padding: 20px;
     text-align: center;
-}
-
-.signupText a {
-    color: #0BE545;
-    text-decoration: none;
-    font-weight: 600;
-}
-
-.signupText a:hover {
-    text-decoration: underline;
-}
-
-/* ========== Home layout (hero, features, cards) ========== */
-.container {
-    width: 90%;
-    max-width: 1200px;
-    margin: 0 auto;
-}
-
-.home-hero {
+    border-bottom: 1px solid var(--bordas);
+    position: fixed;
+    top: 0;
+    left: 0;
     width: 100%;
-    padding: 80px 0;
 }
 
-.hero {
+.btnPrimario {
+    background-color: var(--cor-principal);
+    color: #000;
+    border: none;
+    padding: 10px 40px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: all 0.3s ease;
+    text-decoration: none;
+}
+
+.btnPrimario:hover {
+    background-color: #077924;
+}
+
+.btnSecundario {
+    background-color: transparent;
+    color: var(--texto);
+    border: 1px solid var(--bordas);
+    padding: 10px 40px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: all 0.3s ease;
+    text-decoration: none;
+}
+
+.btnSecundario:hover {
+    border-color: var(--cor-principal);
+}
+
+.logoArea {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+}
+
+.logoArea img {
+    width: 32px;
+    height: 32px;
+}
+
+.logoArea h1 {
+    font-size: 32px;
+    color: var(--texto);
+}
+
+.logoArea a {
+    text-decoration: none;
+}
+
+.containerHeader {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 35px;
+}
+
+.itensHeader nav {
+    display: flex;
+    gap: 20px;
+}
+
+.itensHeader nav ul {
+    list-style: none;
     display: flex;
     gap: 40px;
-    align-items: center;
 }
 
-.hero-left {
-    flex: 1;
+.itensHeader nav a {
+    color: var(--texto);
+    text-decoration: none;
+    font-size: 16px;
+    transition: all 0.3s ease;
 }
 
-.hero-right {
-    flex: 1;
+.itensHeader nav a::after {
+    content: '';
+    display: block;
+    width: 0;
+    height: 2px;
+    background-color: var(--cor-principal);
+    transition: width 0.3s ease;
+}
+
+.itensHeader nav a:hover {
+    color: var(--cor-principal);
+}
+
+.itensHeader nav a:hover::after {
+    width: 100%;
+}
+
+.loginArea {
     display: flex;
+    gap: 40px;
+}
+
+footer {
+    background-color: #000;
+    color: var(--texto);
+    padding: 20px 35px;
+    text-align: center;
+    border-top: 1px solid var(--bordas);
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+}
+
+.containerFooter {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.containerFooter a {
+    color: var(--texto);
+    text-decoration: none;
+}
+
+.containerFooter a h1 {
+    font-size: 32px;
+    color: var(--texto);
+}
+
+.containerFooter p {
+    font-size: 16px;
+    color: var(--cor-principal);
+}
+
+.sloganFooter {
+    font-size: 16px;
+    color: #474646;
+}
+
+/* Estilos pagina cadastro */
+.paginaCadastro {
+    background: var(--fundo);
+    min-height: 100vh;
+    padding: 120px 20px 80px 20px;
+    display: flex;
+    align-items: center;
     justify-content: center;
 }
 
-.hero h1 {
-    font-size: 46px;
-    line-height: 1.03;
-    margin-bottom: 18px;
-    font-weight: 800;
+.containerCadastro {
+    width: 1100px;
+    max-width: calc(100% - 40px);
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 32px;
+    border: 1px solid var(--bordas);
+    padding: 28px;
+    background: rgba(0, 0, 0, 0.35);
+    color: var(--texto);
+    margin-top: 72px;
 }
 
-.hero-sub {
-    color: #bdbdbd;
-    margin-bottom: 24px;
-    font-size: 18px;
-}
-
-.hero-ctas {
+.ladoEsquerdo {
     display: flex;
-    gap: 12px;
-    margin-bottom: 28px;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+    padding: 20px;
+    border-right: 1px solid var(--bordas);
 }
 
-.btn {
+.logoGigante {
+    width: 160px;
+}
+
+.tituloLogo {
+    font-size: 48px;
+    color: var(--texto);
+    margin-top: 12px;
+    letter-spacing: 3px;
+}
+
+.ladoDireito {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+}
+
+.caixaCadastro {
+    width: 100%;
+}
+
+.cabecalhoFormulario .indicador {
+    color: var(--cor-principal);
+    font-weight: 700;
+    margin-bottom: 12px;
     display: inline-block;
-    padding: 12px 20px;
-    border-radius: 10px;
-    text-decoration: none;
+}
+
+.cabecalhoFormulario h2 {
+    font-size: 20px;
+    margin-bottom: 6px;
+    color: var(--texto);
+}
+
+.cabecalhoFormulario p {
+    color: #9aa09a;
+    margin-bottom: 18px;
+    font-size: 14px;
+}
+
+.formCadastro {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.formCadastro .entrada {
+    width: 100%;
+    padding: 12px 14px;
+    border-radius: 2px;
+    border: 1px solid var(--bordas);
+    background: #fff;
+    color: #000;
+    font-size: 14px;
+}
+
+.formCadastro .entrada::placeholder {
+    color: #999;
+}
+
+.grupoEspecialidade p {
+    color: #9aa09a;
+    margin: 8px 0;
+}
+
+.opcoes {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+    margin-top: 6px;
+}
+
+.opcao {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    background: transparent;
+    border: 1px solid var(--bordas);
+    padding: 10px;
+    color: var(--texto);
+}
+
+.opcao input[type="radio"] {
+    transform: scale(1.05);
+    accent-color: var(--cor-principal);
+}
+
+.opcaoCaixa {
+    color: var(--texto);
+}
+
+.botaoSalvar {
+    background: var(--cor-principal);
+    color: #000;
+    border: none;
+    padding: 14px 20px;
+    cursor: pointer;
+    margin-top: 10px;
+    width: 100%;
     font-weight: 700;
 }
 
-.btn-primary {
-    background: #0BE545;
-    color: #111;
+.botaoSalvar:hover {
+    background: #06c338;
 }
 
-.btn-outline {
-    border: 1px solid #0BE545;
-    color: #0BE545;
-    background: transparent;
+.textoEntrar {
+    text-align: center;
+    margin-top: 12px;
+    color: #9aa09a;
+    font-size: 14px;
 }
 
-.hero-features {
-    display: flex;
-    gap: 18px;
-    margin-top: 18px;
-}
-
-.feature {
-    display: flex;
-    gap: 10px;
-    align-items: center;
-}
-
-.icon-placeholder {
-    width: 44px;
-    height: 44px;
-    border-radius: 8px;
-    background: linear-gradient(135deg, #222, #333);
-    border: 1px solid #252525;
-}
-
-.mockup-placeholder {
-    width: 420px;
-    height: 300px;
-    border-radius: 14px;
-    background: linear-gradient(180deg, #0d0d0d, #191919);
-    border: 1px dashed #2b2b2b;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: #777;
-}
-
-.showcase {
-    padding: 60px 0;
-}
-
-.showcase h2 {
-    font-size: 28px;
-    margin-bottom: 22px;
-}
-
-.cards {
-    display: flex;
-    gap: 18px;
-}
-
-.card {
-    background: #0f0f0f;
-    padding: 18px;
-    border-radius: 12px;
-    flex: 1;
-    min-width: 0;
-}
-
-.card-img {
-    width: 100%;
-    height: 120px;
-    border-radius: 8px;
-    background: linear-gradient(90deg, #1a1a1a, #111);
-    margin-bottom: 12px;
+.textoEntrar a {
+    color: var(--cor-principal);
+    text-decoration: none;
 }
 
 @media (max-width: 900px) {
-    .hero {
-        flex-direction: column;
+    .containerCadastro {
+        grid-template-columns: 1fr;
     }
 
-    .hero-right {
-        order: -1
+    .ladoEsquerdo {
+        display: none;
     }
 
-    .hero h1 {
-        font-size: 34px
+    .tituloLogo {
+        font-size: 36px;
     }
 }

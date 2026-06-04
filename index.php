@@ -58,5 +58,7 @@ include('./components/header.php');
 
 </body>
 <script src="https://kit.fontawesome.com/9e07d1881e.js" crossorigin="anonymous"></script>
-
+<?php
+include('./components/footer.php')
+?>
 </html>
