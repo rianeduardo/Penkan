@@ -29,7 +29,7 @@ header {
     padding: 20px;
     text-align: center;
     border-bottom: 1px solid var(--bordas);
-    position: fixed;
+    position: relative;
     top: 0;
     left: 0;
     width: 100%;
@@ -139,7 +139,7 @@ footer {
     padding: 20px 35px;
     text-align: center;
     border-top: 1px solid var(--bordas);
-    position: fixed;
+    position: relative;
     bottom: 0;
     left: 0;
     width: 100%;
@@ -172,26 +172,88 @@ footer {
 }
 
 /* Estilos pagina cadastro */
+
 .paginaCadastro {
     background: var(--fundo);
     min-height: 100vh;
-    padding: 120px 20px 80px 20px;
+    padding: 35px 300px;
+}
+
+.frase {
+    line-height: 1;
+    color: var(--cor-principal);
     display: flex;
+    justify-content: flex-start;
     align-items: center;
-    justify-content: center;
+    gap: 10px;
+}
+
+hr {
+    border: none;
+    width: 100%;
+    border-top: 1px solid var(--bordas);
+    margin: 20px 0;
+}
+
+.inputTerminal {
+    background: var(--cor-principal);
+    animation: piscar 1.5s infinite;
+}
+
+@keyframes piscar {
+
+    0%,
+    50%,
+    100% {
+        opacity: 1;
+    }
+
+    25%,
+    75% {
+        opacity: 0;
+    }
 }
 
 .containerCadastro {
-    width: 1100px;
-    max-width: calc(100% - 40px);
-    display: grid;
-    grid-template-columns: 1fr 1fr;
     gap: 32px;
     border: 1px solid var(--bordas);
     padding: 28px;
     background: rgba(0, 0, 0, 0.35);
     color: var(--texto);
-    margin-top: 72px;
+    margin-top: 20px;
+}
+
+.bolinhaIndicador {
+    width: 6px;
+    height: 6px;
+    background-color: var(--cor-principal);
+    border-radius: 100%;
+    box-shadow: 0 0 6px var(--cor-principal);
+    animation: pulsar 1.5s infinite;
+}
+
+.wrap {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+@keyframes pulsar {
+    0% {
+        transform: scale(1);
+        opacity: 1;
+    }
+
+    50% {
+        transform: scale(1.5);
+        opacity: 0.5;
+    }
+
+    100% {
+        transform: scale(1);
+        opacity: 1;
+    }
 }
 
 .ladoEsquerdo {
@@ -227,9 +289,8 @@ footer {
 
 .cabecalhoFormulario .indicador {
     color: var(--cor-principal);
+    line-height: 1;
     font-weight: 700;
-    margin-bottom: 12px;
-    display: inline-block;
 }
 
 .cabecalhoFormulario h2 {
@@ -255,13 +316,37 @@ footer {
     padding: 12px 14px;
     border-radius: 2px;
     border: 1px solid var(--bordas);
-    background: #fff;
+    background: var(--fundo);
     color: #000;
     font-size: 14px;
 }
 
+.formCadastro .entrada:focus {
+    border-color: var(--cor-principal);
+    outline: none;
+}
+
 .formCadastro .entrada::placeholder {
     color: #999;
+}
+
+.formCadastro .labelRow {
+    display: flex;
+    align-items: center;
+    line-height: 1;
+    gap: 10px;
+    color: #BACBB4;
+}
+
+.formCadastro .labelRow svg {
+    width: 20px;
+    height: 20px;
+    flex: 0 0 auto;
+}
+
+.formCadastro .labelRow label {
+    margin: 0;
+    color: #BACBB4;
 }
 
 .grupoEspecialidade p {
@@ -306,8 +391,17 @@ footer {
     font-weight: 700;
 }
 
+.botaoSalvar .labelRow {
+    display: flex;
+    align-items: center;
+    line-height: 1;
+    gap: 10px;
+    color: #000;
+    justify-content: center;
+}
+
 .botaoSalvar:hover {
-    background: #06c338;
+    background: #077924;
 }
 
 .textoEntrar {
@@ -320,18 +414,4 @@ footer {
 .textoEntrar a {
     color: var(--cor-principal);
     text-decoration: none;
-}
-
-@media (max-width: 900px) {
-    .containerCadastro {
-        grid-template-columns: 1fr;
-    }
-
-    .ladoEsquerdo {
-        display: none;
-    }
-
-    .tituloLogo {
-        font-size: 36px;
-    }
 }
