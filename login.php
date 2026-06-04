@@ -1,6 +1,30 @@
+<?php
+require_once __DIR__ . '/db.php';
+if (session_status() === PHP_SESSION_NONE) session_start();
+$errors = [];
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    $username = trim($_POST['username'] ?? '');
+    $password = $_POST['password'] ?? '';
+    if ($username === '' || $password === '') {
+        $errors[] = 'Preencha usuário e senha.';
+    } else {
+        $stmt = DB::pdo()->prepare('SELECT id, password, name, username FROM users WHERE username = ? LIMIT 1');
+        $stmt->execute([$username]);
+        $u = $stmt->fetch(PDO::FETCH_ASSOC);
+        if ($u && password_verify($password, $u['password'])) {
+            $_SESSION['user_id'] = $u['id'];
+            header('Location: workspaces.php');
+            exit;
+        } else {
+            $errors[] = 'Credenciais inválidas.';
+        }
+    }
+}
+include __DIR__ . '/components/header.php';
+?>
+
 <!DOCTYPE html>
 <html lang="PT-br">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -23,13 +47,19 @@
                     <p>Faça login para acessar sua conta e continuar onde parou.</p>
                 </div>
 
-                <form action="">
-                    <input type="email" placeholder="E-mail" required>
-                    <input type="password" placeholder="Senha" required>
+                <?php if (!empty($errors)): ?>
+                    <div class="errors" style="color: #ff6b6b;margin-bottom:10px;">
+                        <?php foreach ($errors as $e) echo '<div>' . htmlspecialchars($e) . '</div>'; ?>
+                    </div>
+                <?php endif; ?>
+
+                <form action="login.php" method="post">
+                    <input type="text" name="username" placeholder="Usuário" required>
+                    <input type="password" name="password" placeholder="Senha" required>
                     <button type="submit">Entrar</button>
                 </form>
 
-                <p class="signupText">Não tem uma conta? <a href="register.php">Criar conta</a></p>
+                <p class="signupText">Não tem uma conta? <a href="registro.php">Criar conta</a></p>
             </div>
         </div>
     </main>
