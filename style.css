@@ -1,417 +1,573 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=JetBrains+Mono:ital,wght@0,100..800;1,100..800&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=JetBrains+Mono:ital,wght@0,100..800;1,100..800&display=swap");
 
 /*  Reset  Root e Gerais*/
 
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: 'Jetbrains Mono', monospace;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Jetbrains Mono", monospace;
 }
 
 :root {
-    --cor-principal: #0BE545;
-    --bordas: #2E372B;
-    --texto: #DBE6D4;
-    --fundo: #111111;
+  --cor-principal: #0be545;
+  --bordas: #2e372b;
+  --texto: #dbe6d4;
+  --fundo: #111111;
+  --fundo2: #0c160b;
 }
 
 body {
-    background-color: var(--fundo);
-    color: var(--texto);
+  background-color: var(--fundo);
+  color: var(--texto);
 }
 
 /* Estilos da header/footer (Components) */
 
 header {
-    background-color: #000;
-    color: var(--texto);
-    padding: 20px;
-    text-align: center;
-    border-bottom: 1px solid var(--bordas);
-    position: relative;
-    top: 0;
-    left: 0;
-    width: 100%;
+  background-color: #000;
+  color: var(--texto);
+  padding: 35px;
+  text-align: center;
+  border-bottom: 1px solid var(--bordas);
+  position: relative;
+  top: 0;
+  left: 0;
+  width: 100%;
 }
 
 .btnPrimario {
-    background-color: var(--cor-principal);
-    color: #000;
-    border: none;
-    padding: 10px 40px;
-    cursor: pointer;
-    font-size: 16px;
-    transition: all 0.3s ease;
-    text-decoration: none;
+  background-color: var(--cor-principal);
+  color: #000;
+  border: none;
+  padding: 10px 40px;
+  cursor: pointer;
+  font-size: 16px;
+  transition: all 0.3s ease;
+  text-decoration: none;
 }
 
 .btnPrimario:hover {
-    background-color: #077924;
+  background-color: #077924;
 }
 
 .btnSecundario {
-    background-color: transparent;
-    color: var(--texto);
-    border: 1px solid var(--bordas);
-    padding: 10px 40px;
-    cursor: pointer;
-    font-size: 16px;
-    transition: all 0.3s ease;
-    text-decoration: none;
+  background-color: transparent;
+  color: var(--texto);
+  border: 1px solid var(--bordas);
+  padding: 10px 40px;
+  cursor: pointer;
+  font-size: 16px;
+  transition: all 0.3s ease;
+  text-decoration: none;
 }
 
 .btnSecundario:hover {
-    border-color: var(--cor-principal);
+  border-color: var(--cor-principal);
 }
 
 .logoArea {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
 }
 
 .logoArea img {
-    width: 32px;
-    height: 32px;
+  width: 32px;
+  height: 32px;
 }
 
 .logoArea h1 {
-    font-size: 32px;
-    color: var(--texto);
+  font-size: 32px;
+  color: var(--texto);
 }
 
 .logoArea a {
-    text-decoration: none;
+  text-decoration: none;
 }
 
 .containerHeader {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 0 35px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 }
 
 .itensHeader nav {
-    display: flex;
-    gap: 20px;
+  display: flex;
+  gap: 20px;
 }
 
 .itensHeader nav ul {
-    list-style: none;
-    display: flex;
-    gap: 40px;
+  list-style: none;
+  display: flex;
+  gap: 40px;
 }
 
 .itensHeader nav a {
-    color: var(--texto);
-    text-decoration: none;
-    font-size: 16px;
-    transition: all 0.3s ease;
+  color: var(--texto);
+  text-decoration: none;
+  font-size: 16px;
+  transition: all 0.3s ease;
 }
 
 .itensHeader nav a::after {
-    content: '';
-    display: block;
-    width: 0;
-    height: 2px;
-    background-color: var(--cor-principal);
-    transition: width 0.3s ease;
+  content: "";
+  display: block;
+  width: 0;
+  height: 2px;
+  background-color: var(--cor-principal);
+  transition: width 0.3s ease;
 }
 
 .itensHeader nav a:hover {
-    color: var(--cor-principal);
+  color: var(--cor-principal);
 }
 
 .itensHeader nav a:hover::after {
-    width: 100%;
+  width: 100%;
 }
 
 .loginArea {
-    display: flex;
-    gap: 40px;
+  display: flex;
+  gap: 40px;
 }
 
 footer {
-    background-color: #000;
-    color: var(--texto);
-    padding: 20px 35px;
-    text-align: center;
-    border-top: 1px solid var(--bordas);
-    position: relative;
-    bottom: 0;
-    left: 0;
-    width: 100%;
+  background-color: #000;
+  color: var(--texto);
+  padding: 20px 35px;
+  text-align: center;
+  border-top: 1px solid var(--bordas);
+  position: relative;
+  bottom: 0;
+  left: 0;
+  width: 100%;
 }
 
 .containerFooter {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 }
 
 .containerFooter a {
-    color: var(--texto);
-    text-decoration: none;
+  color: var(--texto);
+  text-decoration: none;
 }
 
 .containerFooter a h1 {
-    font-size: 32px;
-    color: var(--texto);
+  font-size: 32px;
+  color: var(--texto);
 }
 
 .containerFooter p {
-    font-size: 16px;
-    color: var(--cor-principal);
+  font-size: 16px;
+  color: var(--cor-principal);
 }
 
 .sloganFooter {
-    font-size: 16px;
-    color: #474646;
+  font-size: 16px;
+  color: #474646;
 }
 
-/* Estilos pagina cadastro */
+/* Estilos pagina cadastro/login */
 
 .paginaCadastro {
-    background: var(--fundo);
-    min-height: 100vh;
-    padding: 35px 300px;
+  background: var(--fundo);
+  min-height: 100vh;
+  padding: 35px 300px;
+}
+
+.paginaLogin {
+  background: var(--fundo);
+  min-height: 100vh;
+  padding: 35px 300px;
 }
 
 .frase {
-    line-height: 1;
-    color: var(--cor-principal);
-    display: flex;
-    justify-content: flex-start;
-    align-items: center;
-    gap: 10px;
+  line-height: 1;
+  color: var(--cor-principal);
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 10px;
 }
 
 hr {
-    border: none;
-    width: 100%;
-    border-top: 1px solid var(--bordas);
-    margin: 20px 0;
+  border: none;
+  width: 100%;
+  border-top: 1px solid var(--bordas);
+  margin: 20px 0;
 }
 
 .inputTerminal {
-    background: var(--cor-principal);
-    animation: piscar 1.5s infinite;
+  background: var(--cor-principal);
+  animation: piscar 1.5s infinite;
 }
 
 @keyframes piscar {
+  0%,
+  50%,
+  100% {
+    opacity: 1;
+  }
 
-    0%,
-    50%,
-    100% {
-        opacity: 1;
-    }
-
-    25%,
-    75% {
-        opacity: 0;
-    }
+  25%,
+  75% {
+    opacity: 0;
+  }
 }
 
 .containerCadastro {
-    gap: 32px;
-    border: 1px solid var(--bordas);
-    padding: 28px;
-    background: rgba(0, 0, 0, 0.35);
-    color: var(--texto);
-    margin-top: 20px;
+  gap: 32px;
+  border: 1px solid var(--bordas);
+  padding: 28px;
+  background: rgba(0, 0, 0, 0.35);
+  color: var(--texto);
+  margin-top: 20px;
 }
 
 .bolinhaIndicador {
-    width: 6px;
-    height: 6px;
-    background-color: var(--cor-principal);
-    border-radius: 100%;
-    box-shadow: 0 0 6px var(--cor-principal);
-    animation: pulsar 1.5s infinite;
+  width: 6px;
+  height: 6px;
+  background-color: var(--cor-principal);
+  border-radius: 100%;
+  box-shadow: 0 0 6px var(--cor-principal);
+  animation: pulsar 1.5s infinite;
 }
 
 .wrap {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    margin-bottom: 20px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 20px;
 }
 
 @keyframes pulsar {
-    0% {
-        transform: scale(1);
-        opacity: 1;
-    }
+  0% {
+    transform: scale(1);
+    opacity: 1;
+  }
 
-    50% {
-        transform: scale(1.5);
-        opacity: 0.5;
-    }
+  50% {
+    transform: scale(1.5);
+    opacity: 0.5;
+  }
 
-    100% {
-        transform: scale(1);
-        opacity: 1;
-    }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
 }
 
 .ladoEsquerdo {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    justify-content: center;
-    padding: 20px;
-    border-right: 1px solid var(--bordas);
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  padding: 20px;
+  border-right: 1px solid var(--bordas);
 }
 
 .logoGigante {
-    width: 160px;
+  width: 160px;
 }
 
 .tituloLogo {
-    font-size: 48px;
-    color: var(--texto);
-    margin-top: 12px;
-    letter-spacing: 3px;
+  font-size: 48px;
+  color: var(--texto);
+  margin-top: 12px;
+  letter-spacing: 3px;
 }
 
 .ladoDireito {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
 }
 
 .caixaCadastro {
-    width: 100%;
+  width: 100%;
 }
 
 .cabecalhoFormulario .indicador {
-    color: var(--cor-principal);
-    line-height: 1;
-    font-weight: 700;
+  color: var(--cor-principal);
+  line-height: 1;
+  font-weight: 700;
 }
 
 .cabecalhoFormulario h2 {
-    font-size: 20px;
-    margin-bottom: 6px;
-    color: var(--texto);
+  font-size: 20px;
+  margin-bottom: 6px;
+  color: var(--texto);
 }
 
 .cabecalhoFormulario p {
-    color: #9aa09a;
-    margin-bottom: 18px;
-    font-size: 14px;
+  color: #9aa09a;
+  margin-bottom: 18px;
+  font-size: 14px;
 }
 
 .formCadastro {
-    display: flex;
-    flex-direction: column;
-    gap: 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
 }
 
 .formCadastro .entrada {
-    width: 100%;
-    padding: 12px 14px;
-    border-radius: 2px;
-    border: 1px solid var(--bordas);
-    background: var(--fundo);
-    color: #000;
-    font-size: 14px;
+  width: 100%;
+  padding: 12px 14px;
+  border-radius: 2px;
+  border: 1px solid var(--bordas);
+  background: var(--fundo);
+  color: var(--texto);
+  font-size: 14px;
 }
 
 .formCadastro .entrada:focus {
-    border-color: var(--cor-principal);
-    outline: none;
+  border-color: var(--cor-principal);
+  outline: none;
 }
 
 .formCadastro .entrada::placeholder {
-    color: #999;
+  color: #999;
 }
 
 .formCadastro .labelRow {
-    display: flex;
-    align-items: center;
-    line-height: 1;
-    gap: 10px;
-    color: #BACBB4;
+  display: flex;
+  align-items: center;
+  line-height: 1;
+  gap: 10px;
+  color: #bacbb4;
 }
 
 .formCadastro .labelRow svg {
-    width: 20px;
-    height: 20px;
-    flex: 0 0 auto;
+  width: 20px;
+  height: 20px;
+  flex: 0 0 auto;
 }
 
 .formCadastro .labelRow label {
-    margin: 0;
-    color: #BACBB4;
+  margin: 0;
+  color: #bacbb4;
 }
 
 .grupoEspecialidade p {
-    color: #9aa09a;
-    margin: 8px 0;
+  color: #9aa09a;
+  margin: 8px 0;
 }
 
 .opcoes {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 10px;
-    margin-top: 6px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+  margin-top: 6px;
 }
 
 .opcao {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    background: transparent;
-    border: 1px solid var(--bordas);
-    padding: 10px;
-    color: var(--texto);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: transparent;
+  border: 1px solid var(--bordas);
+  padding: 10px;
+  color: var(--texto);
 }
 
 .opcao input[type="radio"] {
-    transform: scale(1.05);
-    accent-color: var(--cor-principal);
+  transform: scale(1.05);
+  accent-color: var(--cor-principal);
 }
 
 .opcaoCaixa {
-    color: var(--texto);
+  color: var(--texto);
 }
 
 .botaoSalvar {
-    background: var(--cor-principal);
-    color: #000;
-    border: none;
-    padding: 14px 20px;
-    cursor: pointer;
-    margin-top: 10px;
-    width: 100%;
-    font-weight: 700;
+  background: var(--cor-principal);
+  color: #000;
+  border: none;
+  padding: 14px 20px;
+  cursor: pointer;
+  margin-top: 10px;
+  width: 100%;
+  font-weight: 700;
 }
 
 .botaoSalvar .labelRow {
-    display: flex;
-    align-items: center;
-    line-height: 1;
-    gap: 10px;
-    color: #000;
-    justify-content: center;
+  display: flex;
+  align-items: center;
+  line-height: 1;
+  gap: 10px;
+  color: #000;
+  justify-content: center;
 }
 
 .botaoSalvar:hover {
-    background: #077924;
+  background: #077924;
 }
 
 .textoEntrar {
-    text-align: center;
-    margin-top: 12px;
-    color: #9aa09a;
-    font-size: 14px;
+  text-align: center;
+  margin-top: 12px;
+  color: #9aa09a;
+  font-size: 14px;
 }
 
 .textoEntrar a {
-    color: var(--cor-principal);
-    text-decoration: none;
+  color: var(--cor-principal);
+  text-decoration: none;
+}
+
+/* Estilos HOME */
+
+.homeHero {
+  width: 100%;
+  min-height: 600px;
+  padding: 35px;
+  background-image: url(./assets/logoPenkan.svg);
+  background-size: 50%;
+  background-repeat: no-repeat;
+  background-position: right center;
+}
+
+.containerHero {
+  max-width: 600px;
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+}
+
+.destaque {
+  color: var(--cor-principal);
+  font-family: "JetBrains Mono", monospace;
+}
+
+.containerHero h1 {
+  font-size: 48px;
+  color: var(--texto);
+}
+
+.containerHero p {
+  font-family: "Inter", sans-serif;
+  color: #bacbb4;
+}
+
+#fluxo {
+  background-color: var(--fundo2);
+  border-top: 1px solid var(--bordas);
+  border-bottom: 1px solid var(--bordas);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+.containerFluxo {
+  padding: 35px;
+}
+
+.textosFluxo p {
+  color: #bacbb4;
+}
+
+.textosFluxo h1 {
+  font-size: 32px;
+  color: var(--texto);
+}
+
+.textosFluxo .destaqueFluxo {
+  color: var(--cor-principal);
+  font-family: "JetBrains Mono", monospace;
+}
+
+.wrapperCardsFluxo {
+  display: flex;
+  gap: 20px;
+  margin-top: 40px;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.cardFluxo {
+  background-color: #000;
+  border: 1px solid var(--bordas);
+  padding: 35px;
+  height: 400px;
+  display: flex;
+  text-align: center;
+  flex-direction: column;
+  width: 320px;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.cardFluxo .tituloCard {
+  font-size: 16px;
+  color: var(--texto);
+}
+
+.cardFluxo .descricaoCard {
+  font-size: 14px;
+  color: #bacbb4;
+  text-align: center;
+  font-family: "Inter", sans-serif;
+}
+
+.cardFluxo .logoCard {
+  font-size: 16px;
+  color: var(--cor-principal);
+}
+
+#contato {
+  background-color: var(--fundo2);
+  border-top: 1px solid var(--bordas);
+  border-bottom: 1px solid var(--bordas);
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+
+.contatoEsquerda {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.bulletContato {
+  display: flex;
+  border: 2px solid #119133;
+  width: 100%;
+  padding: 15px;
+  align-items: center;
+  justify-content: space-between;
+  background-color: var(--cor-principal);
+  color: #000;
+  gap: 10px;
+}
+
+.bulletTextoIcon {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.bulletTextoIcon h1 {
+  font-size: 18px;
+}
+
+.bulletTextoIcon p {
+  font-size: 14px;
+}
+
+.contatoDireita {
+  background-color: #ad1c1b;
+  height: 100%;
+  width: 100%;
 }
