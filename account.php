@@ -19,38 +19,153 @@ include __DIR__ . '/components/header.php';
     <style>.profile { max-width:800px;margin:24px auto;background:#0b0b0b;padding:16px;border-radius:8px; }</style>
 </head>
 <body>
-    <main class="container">
-        <div class="profile">
-            <h2>Minha Conta</h2>
-            <p><strong>Usuário:</strong> <?php echo h($user['username'] ?? ''); ?></p>
-            <p><strong>Nome:</strong> <?php echo h($user['name'] ?? ''); ?></p>
-            <p><strong>E-mail:</strong> <?php echo h($user['email'] ?? ''); ?></p>
-            <p><strong>Vetor primário:</strong> <?php echo h($user['specialty'] ?? ''); ?></p>
-            <p><strong>Criado em:</strong> <?php $ca = $user['created_at'] ?? null; echo h($ca ? date('Y-m-d H:i', strtotime($ca)) : '—'); ?></p>
+    <main class="paginaConta">
+    <div class="frase">
+        <span>[root@penkan ~]$</span>
+        <span>account --status</span>
+        <span class="inputTerminal">&nbsp;</span>
+    </div>
 
-            <h3>Atualizar perfil</h3>
-            <form action="update_account.php" method="post">
-                <input type="text" name="name" placeholder="Nome" value="<?php echo h($user['name'] ?? ''); ?>"><br>
-                <input type="email" name="email" placeholder="E-mail" value="<?php echo h($user['email'] ?? ''); ?>"><br>
-                <label>Vetor primário:</label>
-                <select name="specialty">
-                    <option value="webapp" <?php if(($user['specialty'] ?? '')=='webapp') echo 'selected'; ?>>Web App Sec</option>
-                    <option value="network" <?php if(($user['specialty'] ?? '')=='network') echo 'selected'; ?>>Network / Infra</option>
-                    <option value="cloud" <?php if(($user['specialty'] ?? '')=='cloud') echo 'selected'; ?>>Cloud / IAM</option>
-                    <option value="hardware" <?php if(($user['specialty'] ?? '')=='hardware') echo 'selected'; ?>>Hardware / IoT</option>
-                </select>
-                <input type="hidden" name="action" value="profile">
-                <div><button type="submit">Salvar perfil</button></div>
-            </form>
+    <hr>
 
-            <h3>Mudar senha</h3>
-            <form action="update_account.php" method="post">
-                <input type="password" name="current_password" placeholder="Senha atual"><br>
-                <input type="password" name="new_password" placeholder="Nova senha"><br>
-                <input type="hidden" name="action" value="password">
-                <div><button type="submit">Alterar senha</button></div>
-            </form>
+    <section class="containerConta">
+
+        <div class="headerConta">
+            <div class="wrap">
+                <div class="bolinhaIndicador"></div>
+                <span>Sessão autenticada</span>
+            </div>
+
+            <h1>Minha Conta</h1>
+            <p>Gerencie suas informações e credenciais de acesso.</p>
         </div>
-    </main>
+
+        <div class="gridConta">
+
+            <div class="cardConta">
+                <div class="tituloCardConta">
+                    <span class="indicador">&gt;</span>
+                    <h2>Informações do Operador</h2>
+                </div>
+
+                <div class="dadosConta">
+                    <div class="linhaDado">
+                        <span>Usuário</span>
+                        <strong><?php echo h($user['username']); ?></strong>
+                    </div>
+
+                    <div class="linhaDado">
+                        <span>Nome</span>
+                        <strong><?php echo h($user['name']); ?></strong>
+                    </div>
+
+                    <div class="linhaDado">
+                        <span>E-mail</span>
+                        <strong><?php echo h($user['email']); ?></strong>
+                    </div>
+
+                    <div class="linhaDado">
+                        <span>Vetor Primário</span>
+                        <strong><?php echo h($user['specialty']); ?></strong>
+                    </div>
+
+                    <div class="linhaDado">
+                        <span>Criado em</span>
+                        <strong>
+                            <?php
+                            $ca = $user['created_at'] ?? null;
+                            echo h($ca ? date('d/m/Y H:i', strtotime($ca)) : '2026');
+                            ?>
+                        </strong>
+                    </div>
+                </div>
+            </div>
+
+            <div class="cardConta">
+                <div class="tituloCardConta">
+                    <span class="indicador">&gt;</span>
+                    <h2>Atualizar Perfil</h2>
+                </div>
+
+                <form class="formCadastro" action="update_account.php" method="post">
+
+                    <input
+                        class="entrada"
+                        type="text"
+                        name="name"
+                        placeholder="Nome"
+                        value="<?php echo h($user['name']); ?>"
+                    >
+
+                    <input
+                        class="entrada"
+                        type="email"
+                        name="email"
+                        placeholder="E-mail"
+                        value="<?php echo h($user['email']); ?>"
+                    >
+
+                    <select class="entrada" name="specialty">
+                        <option value="webapp" <?php if(($user['specialty'] ?? '')=='webapp') echo 'selected'; ?>>
+                            Web App Security
+                        </option>
+
+                        <option value="network" <?php if(($user['specialty'] ?? '')=='network') echo 'selected'; ?>>
+                            Network / Infra
+                        </option>
+
+                        <option value="cloud" <?php if(($user['specialty'] ?? '')=='cloud') echo 'selected'; ?>>
+                            Cloud / IAM
+                        </option>
+
+                        <option value="hardware" <?php if(($user['specialty'] ?? '')=='hardware') echo 'selected'; ?>>
+                            Hardware / IoT
+                        </option>
+                    </select>
+
+                    <input type="hidden" name="action" value="profile">
+
+                    <button class="botaoSalvar" type="submit">
+                        Salvar Perfil
+                    </button>
+                </form>
+            </div>
+
+            <div class="cardConta">
+                <div class="tituloCardConta">
+                    <span class="indicador">&gt;</span>
+                    <h2>Alterar Senha</h2>
+                </div>
+
+                <form class="formCadastro" action="update_account.php" method="post">
+
+                    <input
+                        class="entrada"
+                        type="password"
+                        name="current_password"
+                        placeholder="Senha atual"
+                    >
+
+                    <input
+                        class="entrada"
+                        type="password"
+                        name="new_password"
+                        placeholder="Nova senha"
+                    >
+
+                    <input type="hidden" name="action" value="password">
+
+                    <button class="botaoSalvar" type="submit">
+                        Atualizar Senha
+                    </button>
+                </form>
+            </div>
+
+        </div>
+    </section>
+</main>
 </body>
+<?php
+include __DIR__ . '/components/footer.php';
+?>
 </html>

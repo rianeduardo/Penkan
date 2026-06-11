@@ -524,12 +524,20 @@ hr {
 
 #contato {
   background-color: var(--fundo2);
+  padding: 35px;
   border-top: 1px solid var(--bordas);
   border-bottom: 1px solid var(--bordas);
   display: flex;
   flex-direction: row;
   justify-content: center;
   align-items: center;
+}
+
+.containerContato {
+  width: 100%;
+  display: grid;
+  grid-template-columns: 30% 70%;
+  gap: 20px;
 }
 
 .contatoEsquerda {
@@ -550,6 +558,13 @@ hr {
   background-color: var(--cor-principal);
   color: #000;
   gap: 10px;
+  transition: all 0.3s ease;
+}
+
+.bulletContato:hover {
+  transform: translateY(-5px);
+  background-color: #119133;
+  cursor: pointer;
 }
 
 .bulletTextoIcon {
@@ -567,7 +582,339 @@ hr {
 }
 
 .contatoDireita {
-  background-color: #ad1c1b;
+  background-image: url(./assets/grafico.svg);
+  background-repeat: no-repeat;
+  background-size: 100%;
   height: 100%;
   width: 100%;
+}
+
+#recursos {
+  padding: 60px 35px;
+  background-color: var(--fundo);
+  border-bottom: 1px solid var(--bordas);
+}
+
+#recursos svg {
+  height: 56px;
+  width: 56px;
+}
+
+.containerRecursos {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.textosRecursos {
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+.textosRecursos p {
+  color: #bacbb4;
+  font-size: 14px;
+}
+
+.textosRecursos h1 {
+  font-size: 32px;
+  color: var(--texto);
+  margin-top: 10px;
+}
+
+.gridRecursos {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+}
+
+.cardRecurso {
+  background-color: #000;
+  border: 1px solid var(--bordas);
+  padding: 25px;
+  height: 250px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  transition: all 0.3s ease;
+}
+
+.cardRecurso:hover {
+  border-color: var(--cor-principal);
+  transform: translateY(-6px);
+}
+
+.iconeRecurso {
+  display: flex;
+  justify-content: flex-start;
+}
+
+.cardRecurso h2 {
+  font-size: 16px;
+  color: var(--texto);
+  margin: 10px 0;
+}
+
+.cardRecurso p {
+  font-size: 14px;
+  color: #bacbb4;
+  font-family: "Inter", sans-serif;
+  line-height: 1.4;
+}
+
+/* PAGINA CONTA */
+
+.paginaConta {
+  min-height: 100vh;
+  padding: 35px 300px;
+  background: var(--fundo);
+}
+
+.containerConta {
+  margin-top: 20px;
+  border: 1px solid var(--bordas);
+  background: rgba(0, 0, 0, 0.35);
+  padding: 28px;
+}
+
+.headerConta {
+  margin-bottom: 30px;
+}
+
+.headerConta h1 {
+  font-size: 32px;
+  color: var(--texto);
+  margin-bottom: 8px;
+}
+
+.headerConta p {
+  color: #9aa09a;
+}
+
+.gridConta {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px;
+}
+
+.cardConta {
+  background: #000;
+  border: 1px solid var(--bordas);
+  padding: 24px;
+}
+
+.cardConta:hover {
+  border-color: var(--cor-principal);
+}
+
+.tituloCardConta {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+.tituloCardConta .indicador {
+  color: var(--cor-principal);
+}
+
+.tituloCardConta h2 {
+  font-size: 18px;
+}
+
+.dadosConta {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.linhaDado {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-bottom: 12px;
+  border-bottom: 1px solid var(--bordas);
+}
+
+.linhaDado span {
+  color: #9aa09a;
+}
+
+.linhaDado strong {
+  color: var(--texto);
+}
+
+.formCadastro select.entrada {
+  cursor: pointer;
+}
+
+.formCadastro select option {
+  background: #000;
+  color: var(--texto);
+}
+
+/* PAGINA WORKSPACES */
+
+.paginaWorkspaces {
+  min-height: 100vh;
+  padding: 35px 300px;
+  background: var(--fundo);
+}
+
+.headerWorkspaces {
+  margin-bottom: 24px;
+}
+
+.headerWorkspaces h1,
+.headerWorkspaces h2 {
+  font-size: 32px;
+  color: var(--texto);
+  margin-bottom: 8px;
+}
+
+.headerWorkspaces p {
+  color: var(--texto);
+}
+
+.novoWorkspace {
+  background: rgba(0, 0, 0, 0.35);
+  border: 1px solid var(--bordas);
+  padding: 24px;
+  margin-bottom: 24px;
+}
+
+.formWorkspace {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.formWorkspace input {
+  flex: 1;
+  min-width: 220px;
+  padding: 12px;
+  background: #000;
+  border: 1px solid var(--bordas);
+  color: var(--texto);
+  font-size: 14px;
+}
+
+.formWorkspace input:focus {
+  outline: none;
+  border-color: var(--cor-principal);
+}
+
+.formWorkspace button {
+  background: var(--cor-principal);
+  color: #000;
+  border: none;
+  padding: 12px 24px;
+  cursor: pointer;
+  font-weight: 700;
+  transition: 0.3s;
+}
+
+.formWorkspace button:hover {
+  background: #119133;
+}
+
+.listaWorkspaces {
+  display: grid;
+  gap: 20px;
+}
+
+.workspaceCard {
+  background: #000;
+  border: 1px solid var(--bordas);
+  padding: 24px;
+  transition: all 0.3s ease;
+}
+
+.workspaceCard:hover {
+  border-color: var(--cor-principal);
+  transform: translateY(-3px);
+}
+
+.workspaceHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 12px;
+}
+
+.workspaceTitulo {
+  color: var(--texto);
+  text-decoration: none;
+  font-size: 20px;
+  font-weight: 700;
+}
+
+.workspaceTitulo:hover {
+  color: var(--cor-principal);
+}
+
+.workspaceStatus {
+  padding: 4px 10px;
+  border: 1px solid var(--bordas);
+  font-size: 12px;
+  text-transform: uppercase;
+}
+
+.workspaceStatus.ativo {
+  color: var(--cor-principal);
+  border-color: var(--cor-principal);
+}
+
+.workspaceStatus.arquivado {
+  color: #ffb347;
+  border-color: #ffb347;
+}
+
+.workspaceDescricao {
+  color: #bacbb4;
+  font-family: "Inter", sans-serif;
+  margin-bottom: 16px;
+  line-height: 1.5;
+}
+
+.workspaceData {
+  color: #777;
+  font-size: 13px;
+}
+
+.workspaceAcoes {
+  display: flex;
+  gap: 10px;
+  margin-top: 20px;
+  flex-wrap: wrap;
+}
+
+.workspaceAcoes form {
+  margin: 0;
+}
+
+.btnWorkspace {
+  background: transparent;
+  border: 1px solid var(--bordas);
+  color: var(--texto);
+  padding: 10px 16px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.btnWorkspace:hover {
+  border-color: var(--cor-principal);
+  color: var(--cor-principal);
+}
+
+.btnWorkspace.delete:hover {
+  border-color: #ff4d4d;
+  color: #ff4d4d;
+}
+
+.semWorkspaces {
+  border: 1px dashed var(--bordas);
+  padding: 40px;
+  text-align: center;
+  color: #888;
+  background: rgba(0, 0, 0, 0.2);
 }

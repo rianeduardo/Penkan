@@ -22,9 +22,8 @@ if (!empty($_SESSION['user_id'])) {
             <nav>
                 <ul>
                     <li><a href="#">Recursos</a></li>
-                    <li><a href="#">Como funciona</a></li>
-                    <li><a href="#">Contato</a></li>
-                    <li><a href="#">Sobre</a></li>
+                    <li><a href="index.php#fluxo">Como funciona</a></li>
+                    <li><a href="index.php#contato">Contato</a></li>
                     <li><a href="workspaces.php">Workspaces</a></li>
                 </ul>
             </nav>

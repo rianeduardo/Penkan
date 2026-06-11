@@ -9,6 +9,7 @@ include('./components/header.php');
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>PENKAN | Minha conta</title>
+    <link rel="shortcut icon" href="./assets/logoPenkan.svg" type="image/x-icon">
 </head>
 
 <body>
