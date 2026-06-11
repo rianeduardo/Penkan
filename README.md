@@ -47,6 +47,176 @@ Penkan é um sistema standalone para desktop executado via navegador local. Ele 
 - **Usuário Registrado:** profissional ou estudante de segurança ofensiva que deseja organizar testes de penetração e tarefas técnicas em um quadro Kanban.
 - **Administrador Local:** pessoa responsável por manter o ambiente de uso, mas sem um painel administrativo separado na versão atual.
 
+### 2.4 Modelo de Dados
+
+O Penkan utiliza um banco de dados SQLite local composto por três entidades principais: usuários, workspaces e cards.
+
+A estrutura segue uma hierarquia simples:
+
+```text
+Usuário
+ └── Workspace
+      └── Card
+```
+
+Um usuário pode possuir múltiplos workspaces e cada workspace pode conter múltiplos cards.
+
+### Estrutura Geral
+
+```text
+users
+ │
+ └── workspaces
+          │
+          └── cards
+                    │
+                    ├── status
+                    ├── urgency
+                    └── preset
+```
+
+---
+
+### Entidade: Users
+
+Responsável pelo armazenamento das contas cadastradas na plataforma.
+
+| Campo      | Descrição                          |
+| ---------- | ---------------------------------- |
+| id         | Identificador único                |
+| name       | Nome do usuário                    |
+| username   | Nome de usuário                    |
+| email      | E-mail                             |
+| password   | Senha armazenada de forma segura   |
+| specialty  | Área de especialidade em segurança |
+| created_at | Data de criação da conta           |
+
+Relacionamento:
+
+```text
+1 Usuário → N Workspaces
+```
+
+---
+
+### Entidade: Workspaces
+
+Representa um projeto, cliente, laboratório ou ambiente de trabalho.
+
+| Campo       | Descrição                 |
+| ----------- | ------------------------- |
+| id          | Identificador único       |
+| user_id     | Proprietário do workspace |
+| title       | Nome do workspace         |
+| description | Descrição                 |
+| status      | Situação atual            |
+| notes       | Observações gerais        |
+| created_at  | Data de criação           |
+
+Relacionamento:
+
+```text
+1 Workspace → N Cards
+```
+
+---
+
+### Entidade: Cards
+
+Representa uma atividade individual dentro de um workspace.
+
+| Campo        | Descrição                    |
+| ------------ | ---------------------------- |
+| id           | Identificador único          |
+| workspace_id | Workspace relacionado        |
+| user_id      | Usuário criador              |
+| title        | Título da atividade          |
+| description  | Descrição detalhada          |
+| preset       | Categoria da atividade       |
+| status       | Estado atual no fluxo Kanban |
+| urgency      | Nível de prioridade          |
+| created_at   | Data de criação              |
+
+---
+
+### Fluxo Kanban
+
+Os cards podem assumir os seguintes estados:
+
+| Status  | Descrição                    |
+| ------- | ---------------------------- |
+| A Fazer | Atividade ainda não iniciada |
+| Fazendo | Atividade em execução        |
+| Feito   | Atividade concluída          |
+
+---
+
+### Presets de Segurança
+
+O campo `preset` define a categoria da atividade dentro do contexto de segurança ofensiva.
+
+#### Pentest Checklist
+
+Organização das etapas de um teste de invasão.
+
+Exemplos:
+
+* Reconhecimento
+* Enumeração
+* Exploração
+* Relatório
+
+#### Vulnerability Patch
+
+Acompanhamento e validação de correções de vulnerabilidades.
+
+Exemplos:
+
+* Reteste
+* Validação de correção
+* Verificação de mitigação
+
+#### Threat Modeling
+
+Identificação e análise de ameaças e superfícies de ataque.
+
+Exemplos:
+
+* Identificação de ativos
+* Mapeamento de riscos
+* Cenários de ataque
+
+#### Incident Response
+
+Gerenciamento de incidentes de segurança.
+
+Exemplos:
+
+* Contenção
+* Investigação
+* Recuperação
+
+#### Phishing Simulation
+
+Simulação de campanhas de phishing para conscientização.
+
+Exemplos:
+
+* Preparação da campanha
+* Envio de e-mails
+* Coleta de métricas
+* Relatório de resultados
+
+---
+
+### Tabela Interna SQLite
+
+O SQLite mantém automaticamente a tabela interna `sqlite_sequence`.
+
+Essa tabela registra os últimos valores utilizados por colunas configuradas com `AUTOINCREMENT`, permitindo a geração automática de novos identificadores.
+
+A tabela não é manipulada diretamente pela aplicação.
+
 ---
 
 ## 3. Requisitos do Sistema
