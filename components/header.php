@@ -12,6 +12,9 @@ if (!empty($_SESSION['user_id'])) {
 }
 ?>
 
+    <link rel="shortcut icon" href="./assets/logoPenkan.svg" type="image/x-icon">
+
+
 <header>
     <div class="containerHeader">
         <div class="logoArea">

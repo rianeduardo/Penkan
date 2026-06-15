@@ -1,3 +1,6 @@
+    <link rel="shortcut icon" href="./assets/logoPenkan.svg" type="image/x-icon">
+
+
 <footer>
     <div class="containerFooter">
         <a href="index.php">

@@ -15,6 +15,7 @@ include __DIR__ . '/components/header.php';
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <title>Conta - Penkan</title>
     <link rel="stylesheet" href="style.css">
+    <link rel="shortcut icon" href="./assets/logoPenkan.svg" type="image/x-icon">
     <style>.profile { max-width:800px;margin:24px auto;background:#0b0b0b;padding:16px;border-radius:8px; }</style>
 </head>
 <body>
