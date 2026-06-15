@@ -1,189 +1,547 @@
-# PENKAN
+![PHP](https://img.shields.io/badge/php-%23777BB4.svg?style=for-the-badge&logo=php&logoColor=white) ![SQLite](https://img.shields.io/badge/sqlite-%2307405e.svg?style=for-the-badge&logo=sqlite&logoColor=white) ![HTML5](https://img.shields.io/badge/html5-%23E34F26.svg?style=for-the-badge&logo=html5&logoColor=white) 	![CSS](https://img.shields.io/badge/css-%23663399.svg?style=for-the-badge&logo=css&logoColor=white) ![JavaScript](https://img.shields.io/badge/javascript-%23323330.svg?style=for-the-badge&logo=javascript&logoColor=%23F7DF1E) ![Git](https://img.shields.io/badge/git-%23F05033.svg?style=for-the-badge&logo=git&logoColor=white) ![GitHub](https://img.shields.io/badge/github-%23121011.svg?style=for-the-badge&logo=github&logoColor=white)
 
-PENKAN e uma plataforma web em PHP para organizar projetos de pentest em formato Kanban. A ideia e simples: criar workspaces, registrar cards por etapa do trabalho, mover tarefas entre colunas e manter notas do projeto em um lugar so.
+# Documentação de Requisitos de Software (DRS / SRS) — PENKAN
 
-O projeto foi feito com PHP, SQLite, HTML, CSS e JavaScript puro, pensando em uso local ou em um servidor PHP simples.
-
-[Protótipo BASE no Figma](https://www.figma.com/design/OJsw4eMHVuVOVPupTlguys/Penkan?node-id=0-1&t=3PO3rn9GtcPyx47i-1)
+**Padrão de Referência:** ISO/IEC/IEEE 29148:2018  
+**Versão:** 1.0  
+**Status:** Em desenvolvimento
 
 ---
 
-## Funcionalidades
+# 1. Introdução
 
-- Cadastro e login de usuario.
-- Sessao autenticada para areas internas.
-- Criacao, listagem, arquivamento e exclusao de workspaces.
-- Acesso ao workspace clicando no card inteiro.
-- Criacao de cards com titulo, descricao, preset e urgencia.
-- Quadro Kanban com colunas: A fazer, Fazendo e Feito.
-- Movimentacao de cards entre colunas.
-- Exclusao de cards.
-- Campo de notas por workspace.
-- Persistencia local usando SQLite.
-- Bloqueio de acesso direto ao arquivo `db.php`.
+## 1.1 Finalidade
 
-## Tecnologias
+Este documento especifica os requisitos, arquitetura, modelo de dados, regras de negócio, restrições e características técnicas do sistema PENKAN.
 
-- PHP
-- SQLite
-- HTML5
-- CSS3
-- JavaScript
+O PENKAN é uma plataforma web desenvolvida em PHP para gerenciamento de projetos de segurança ofensiva através da metodologia Kanban. O sistema foi projetado para auxiliar pentesters, estudantes e profissionais da área na organização de atividades, evidências e etapas de testes de invasão.
 
-## Como Rodar
+---
 
-Requisitos:
+## 1.2 Escopo
 
-- PHP com extensao PDO SQLite habilitada.
-- Navegador web.
+O sistema permite:
 
-Na raiz do projeto, rode:
+- Cadastro e autenticação de usuários;
+- Criação e gerenciamento de múltiplos workspaces;
+- Organização de atividades utilizando Kanban;
+- Registro de notas de projeto;
+- Gerenciamento de cards com prioridades e categorias;
+- Persistência local utilizando SQLite.
+
+Fora do escopo atual:
+
+- Colaboração em tempo real;
+- Sincronização em nuvem;
+- Integrações externas;
+- Compartilhamento entre usuários;
+- API pública.
+
+---
+
+## 1.3 Definições
+
+| Termo     | Definição                                       |
+| --------- | ----------------------------------------------- |
+| Workspace | Projeto ou ambiente de trabalho do usuário      |
+| Card      | Atividade individual dentro de um workspace     |
+| Kanban    | Método visual de gerenciamento de tarefas       |
+| Preset    | Categoria pré-definida de atividade             |
+| SQLite    | Banco de dados embarcado utilizado pelo sistema |
+
+---
+
+## Protótipo e Design
+
+O protótipo inicial da interface foi desenvolvido no Figma e serviu como referência para a implementação visual do sistema.
+
+**Protótipo Figma:**  
+[CLIQUE AQUI](https://www.figma.com/design/OJsw4eMHVuVOVPupTlguys/Penkan?node-id=0-1&t=3PO3rn9GtcPyx47i-1)
+
+---
+
+# Como Executar o Sistema
+
+## Requisitos
+
+Antes de executar o PENKAN, verifique se os seguintes requisitos estão instalados:
+
+- PHP 8.0 ou superior
+- Extensão PDO SQLite habilitada
+- Navegador moderno compatível com HTML5
+- Git (opcional, para clonagem do repositório)
+
+---
+
+## Obtenção do Projeto
+
+Clone o repositório utilizando Git:
+
+```bash
+git clone https://github.com/rianeduardo/PENKAN.git
+```
+
+Acesse a pasta do projeto:
+
+```bash
+cd PENKAN
+```
+
+---
+
+## Inicialização do Servidor
+
+Na raiz do projeto, execute:
 
 ```bash
 php -S localhost:8000
 ```
 
-Depois acesse:
+O servidor embutido do PHP será iniciado na porta 8000.
+
+---
+
+## Acesso à Aplicação
+
+Abra o navegador e acesse:
 
 ```text
 http://localhost:8000
 ```
 
-O banco fica em `data/db.sqlite`. Se ele nao existir, o proprio sistema cria as tabelas necessarias quando a aplicacao for usada.
-
-## Estrutura do Projeto
-
-```text
-PENKAN/
-  actions/
-    create_card.php
-    create_workspace.php
-    delete_card.php
-    delete_workspace.php
-    move_card.php
-    update_account.php
-    update_workspace_notes.php
-    update_workspace_status.php
-  assets/
-    app.js
-    grafico.svg
-    logoPenkan.svg
-  components/
-    footer.php
-    header.php
-  data/
-    db.sqlite
-  account.php
-  db.php
-  index.php
-  login.php
-  logout.php
-  registro.php
-  style.css
-  verifica_sessao.php
-  workspace.php
-  workspaces.php
-```
-
-## Paginas Principais
-
-| Arquivo | Funcao |
-| --- | --- |
-| `index.php` | Home do PENKAN, com fluxo, recursos e contato. |
-| `registro.php` | Criacao de conta. |
-| `login.php` | Autenticacao do usuario. |
-| `logout.php` | Encerramento da sessao. |
-| `account.php` | Visualizacao e atualizacao dos dados da conta. |
-| `workspaces.php` | Listagem e gerenciamento dos workspaces. |
-| `workspace.php` | Quadro Kanban, cards e notas do workspace. |
-| `db.php` | Conexao, criacao e migracao basica do banco SQLite. |
-| `verifica_sessao.php` | Centraliza a validacao de sessao nas paginas protegidas. |
-
-## Organizacao dos Handlers
-
-Os arquivos dentro de `actions/` recebem formularios e executam mudancas no banco. Eles nao exibem tela propria; apenas validam a sessao, conferem permissao sobre o workspace/card e redirecionam o usuario.
-
-Essa separacao deixa a raiz mais limpa e evita misturar pagina visual com script de processamento.
+---
 
 ## Banco de Dados
 
-O PENKAN usa tres entidades principais:
+O PENKAN utiliza SQLite para persistência local.
+
+Arquivo do banco:
 
 ```text
-users
-  -> workspaces
-      -> cards
+data/db.sqlite
 ```
 
-### `users`
+Caso o banco ainda não exista, o próprio sistema realizará a criação automática das tabelas necessárias durante a primeira execução.
 
-| Campo | Descricao |
-| --- | --- |
-| `id` | Identificador do usuario. |
-| `name` | Nome ou apelido. |
-| `username` | Nome de usuario usado no login. |
-| `email` | E-mail da conta. |
-| `password` | Senha com hash. |
-| `specialty` | Vetor primario / especialidade. |
-| `created_at` | Data de criacao. |
+---
 
-### `workspaces`
+## Estrutura de Execução
 
-| Campo | Descricao |
-| --- | --- |
-| `id` | Identificador do workspace. |
-| `user_id` | Dono do workspace. |
-| `title` | Titulo do workspace. |
-| `description` | Descricao opcional. |
-| `status` | `active` ou `archived`. |
-| `notes` | Anotacoes gerais do projeto. |
-| `created_at` | Data de criacao. |
+```text
+Usuário
+   ↓
+Navegador
+   ↓
+Servidor PHP Local
+   ↓
+Aplicação PENKAN
+   ↓
+SQLite
+```
 
-### `cards`
+---
 
-| Campo | Descricao |
-| --- | --- |
-| `id` | Identificador do card. |
-| `workspace_id` | Workspace ao qual o card pertence. |
-| `user_id` | Usuario criador. |
-| `title` | Titulo da tarefa. |
-| `description` | Descricao da tarefa. |
-| `preset` | Categoria do card. |
-| `status` | `todo`, `doing` ou `done`. |
-| `urgency` | Prioridade: `Low`, `Medium`, `High` ou `Critical`. |
-| `created_at` | Data de criacao. |
+## Encerramento
 
-## Fluxo de Uso
+Para interromper a execução do servidor local, utilize:
 
-1. O usuario cria uma conta em `registro.php`.
-2. O sistema salva a senha usando `password_hash`.
-3. O usuario entra pelo `login.php`.
-4. Depois do login, ele acessa `workspaces.php`.
-5. Cada workspace abre um quadro em `workspace.php`.
-6. Dentro do workspace, o usuario cria cards, move entre colunas e salva notas.
+```text
+CTRL + C
+```
 
-## Seguranca
+no terminal onde o servidor PHP estiver sendo executado.
 
-- Senhas sao armazenadas com hash usando `password_hash`.
-- Login valida senha com `password_verify`.
-- Paginas internas usam `verifica_sessao.php`.
-- Actions conferem se o workspace/card pertence ao usuario logado antes de alterar dados.
-- `db.php` retorna acesso negado quando chamado diretamente pelo navegador.
+---
 
-## Melhorias Futuras
+# 2. Descrição Geral
 
-Essas sao as proximas ideias para deixar o PENKAN mais completo:
+## 2.1 Perspectiva do Produto
 
-- Workspaces ilimitados com filtros, busca e melhor separacao por cliente/escopo.
-- Gestao de vulnerabilidades com severidade, impacto, evidencia e status de correcao.
-- Central de evidencias categorizadas para screenshots, payloads, logs e provas de conceito.
-- Relatorios profissionais para exportacao em PDF/HTML.
-- Metodologia PENKAN integrada com etapas de reconhecimento, exploracao, pos-exploracao e reporte.
-- Historico e auditoria em tempo real para registrar alteracoes, movimentacoes e atualizacoes.
-- Workspaces colaborativos ao vivo para equipes trabalharem no mesmo projeto.
-- Edicao completa de cards existentes.
-- Melhor tratamento de mensagens de erro e sucesso para o usuario.
+O PENKAN é uma aplicação web standalone executada localmente através de um servidor PHP.
 
-## Status
+A arquitetura é composta por:
 
-Projeto em reta final, com foco em organizacao, autenticacao, CRUD basico e acabamento da experiencia do workspace.
+- Frontend em HTML, CSS e JavaScript;
+- Backend em PHP;
+- Persistência em SQLite.
+
+A aplicação pode ser executada localmente sem dependência de serviços externos.
+
+---
+
+## 2.2 Stakeholders
+
+| Stakeholder         | Interesse                            |
+| ------------------- | ------------------------------------ |
+| Pentester           | Organizar projetos e tarefas         |
+| Estudante           | Aprender metodologias de organização |
+| Administrador Local | Manter o ambiente funcionando        |
+| Desenvolvedor       | Evoluir e manter o sistema           |
+
+---
+
+## 2.3 Perfis de Usuário
+
+### Usuário Registrado
+
+Profissional ou estudante que utiliza o sistema para organizar atividades de segurança ofensiva.
+
+### Administrador Local
+
+Responsável pela manutenção do ambiente de execução.
+
+---
+
+## 2.4 Funções do Produto
+
+- Cadastro de usuários;
+- Login e logout;
+- Criação de workspaces;
+- Arquivamento de workspaces;
+- Exclusão de workspaces;
+- Criação de cards;
+- Movimentação de cards;
+- Exclusão de cards;
+- Gerenciamento de notas;
+- Persistência automática dos dados.
+
+---
+
+## 2.5 Restrições
+
+- PHP 8.0 ou superior;
+- Extensão PDO SQLite habilitada;
+- Navegador compatível com HTML5;
+- Banco de dados SQLite local;
+- Funcionamento voltado para ambiente desktop.
+
+---
+
+# 3. Arquitetura do Sistema
+
+## 3.1 Arquitetura Lógica
+
+```text
+Usuário
+   ↓
+Interface Web
+   ↓
+Páginas PHP
+   ↓
+Actions
+   ↓
+SQLite
+```
+
+## 3.2 Camadas
+
+```text
+Apresentação
+├── HTML5
+├── CSS3
+└── JavaScript
+
+Aplicação
+└── PHP
+
+Persistência
+└── SQLite
+```
+
+---
+
+# 4. Estrutura do Projeto
+
+```text
+PENKAN/
+├── actions/
+├── assets/
+├── components/
+├── data/
+├── account.php
+├── db.php
+├── index.php
+├── login.php
+├── logout.php
+├── registro.php
+├── style.css
+├── verifica_sessao.php
+├── workspace.php
+└── workspaces.php
+```
+
+---
+
+# 5. Modelo de Dados
+
+## Estrutura Hierárquica
+
+```text
+User
+ └── Workspace
+       └── Card
+```
+
+## Users
+
+| Campo      | Descrição                |
+| ---------- | ------------------------ |
+| id         | Identificador único      |
+| name       | Nome do usuário          |
+| username   | Nome de usuário          |
+| email      | E-mail                   |
+| password   | Senha protegida por hash |
+| specialty  | Especialidade            |
+| created_at | Data de criação          |
+
+Relacionamento:
+
+```text
+1 User → N Workspaces
+```
+
+## Workspaces
+
+| Campo       | Descrição          |
+| ----------- | ------------------ |
+| id          | Identificador      |
+| user_id     | Proprietário       |
+| title       | Nome               |
+| description | Descrição          |
+| status      | active ou archived |
+| notes       | Observações        |
+| created_at  | Data de criação    |
+
+Relacionamento:
+
+```text
+1 Workspace → N Cards
+```
+
+## Cards
+
+| Campo        | Descrição                     |
+| ------------ | ----------------------------- |
+| id           | Identificador                 |
+| workspace_id | Workspace associado           |
+| user_id      | Criador                       |
+| title        | Título                        |
+| description  | Descrição                     |
+| preset       | Categoria                     |
+| status       | todo, doing ou done           |
+| urgency      | Low, Medium, High ou Critical |
+| created_at   | Data de criação               |
+
+---
+
+# 6. Regras de Negócio
+
+| ID     | Regra                                                        |
+| ------ | ------------------------------------------------------------ |
+| RN-001 | Um usuário só pode visualizar seus próprios workspaces       |
+| RN-002 | Um usuário só pode alterar seus próprios cards               |
+| RN-003 | Todo workspace deve possuir um proprietário                  |
+| RN-004 | Todo card deve pertencer a um workspace                      |
+| RN-005 | Usuários não autenticados não podem acessar áreas protegidas |
+| RN-006 | Workspaces arquivados permanecem armazenados                 |
+| RN-007 | Cards só podem existir nos estados todo, doing ou done       |
+
+---
+
+# 7. Requisitos Funcionais
+
+## RF-001 — Cadastro de Usuário
+
+Descrição:
+O sistema deve permitir o cadastro de novos usuários.
+
+Entradas:
+- Nome
+- Username
+- Email
+- Senha
+
+Critério de aceitação:
+- Conta criada com sucesso.
+- Usuário consegue realizar login.
+
+---
+
+## RF-002 — Login
+
+Descrição:
+O sistema deve autenticar usuários cadastrados.
+
+Entradas:
+- Username
+- Senha
+
+Critério de aceitação:
+- Sessão criada.
+- Redirecionamento para workspaces.
+
+---
+
+## RF-003 — Criar Workspace
+
+Descrição:
+Permitir a criação de workspaces personalizados.
+
+Critério de aceitação:
+- Workspace salvo no banco.
+- Workspace exibido na listagem.
+
+---
+
+## RF-004 — Criar Card
+
+Descrição:
+Permitir criação de cards em um workspace.
+
+Entradas:
+- Título
+- Descrição
+- Preset
+- Prioridade
+
+Critérios de aceitação:
+- Card salvo no banco.
+- Card exibido na coluna correspondente.
+
+---
+
+## RF-005 — Movimentar Card
+
+Descrição:
+Permitir mover cards entre colunas.
+
+Critério de aceitação:
+- Novo status persistido no banco.
+
+---
+
+## RF-006 — Excluir Card
+
+Descrição:
+Permitir remoção de cards existentes.
+
+---
+
+## RF-007 — Gerenciar Notas
+
+Descrição:
+Permitir salvar anotações vinculadas ao workspace.
+
+---
+
+## RF-008 — Persistência
+
+Descrição:
+Todos os dados devem permanecer armazenados após reinicialização.
+
+---
+
+# 8. Requisitos Não Funcionais
+
+| ID      | Requisito                                            | Categoria       |
+| ------- | ---------------------------------------------------- | --------------- |
+| RNF-001 | Senhas devem ser protegidas por hash                 | Segurança       |
+| RNF-002 | Operações comuns devem responder em até 2 segundos   | Desempenho      |
+| RNF-003 | Dados devem permanecer íntegros após reinicialização | Confiabilidade  |
+| RNF-004 | Sistema deve funcionar em navegadores modernos       | Compatibilidade |
+| RNF-005 | Interface deve manter boa usabilidade em desktop     | Usabilidade     |
+
+---
+
+# 9. Segurança
+
+- Utilização de password_hash();
+- Validação com password_verify();
+- Controle de sessão por verifica_sessao.php;
+- Verificação de propriedade dos workspaces;
+- Verificação de propriedade dos cards;
+- Bloqueio de acesso direto ao db.php.
+
+---
+
+# 10. Casos de Uso
+
+| ID     | Caso de Uso     | Requisito |
+| ------ | --------------- | --------- |
+| UC-001 | Criar Conta     | RF-001    |
+| UC-002 | Realizar Login  | RF-002    |
+| UC-003 | Criar Workspace | RF-003    |
+| UC-004 | Criar Card      | RF-004    |
+| UC-005 | Mover Card      | RF-005    |
+| UC-006 | Excluir Card    | RF-006    |
+| UC-007 | Gerenciar Notas | RF-007    |
+
+---
+
+# 11. Fluxo de Uso
+
+1. Usuário cria conta.
+2. Sistema gera hash da senha.
+3. Usuário realiza login.
+4. Sistema cria sessão.
+5. Usuário acessa workspaces.
+6. Usuário cria projetos.
+7. Usuário cria cards.
+8. Usuário movimenta cards.
+9. Sistema persiste todas as alterações.
+
+---
+
+# 12. Análise de Riscos
+
+| Risco                           | Impacto | Mitigação                  |
+| ------------------------------- | ------- | -------------------------- |
+| Corrupção do SQLite             | Alto    | Backups periódicos         |
+| Falhas de autenticação          | Alto    | Hash seguro e validações   |
+| Incompatibilidade de versão PHP | Médio   | Definir requisitos mínimos |
+| Exclusão acidental de dados     | Médio   | Confirmações e backups     |
+
+---
+
+# 13. Roadmap
+
+- Edição completa de cards;
+- Upload de evidências;
+- Exportação de relatórios PDF;
+- Dashboard de métricas;
+- Histórico de alterações;
+- Colaboração em tempo real;
+- API REST;
+- Integração com metodologias de pentest;
+- Sistema avançado de vulnerabilidades.
+
+---
+
+# 14. Controle de Versão
+
+O projeto utiliza Git para rastreamento das alterações.
+
+Arquivos principais:
+
+- index.php
+- login.php
+- registro.php
+- workspaces.php
+- workspace.php
+- account.php
+- db.php
+
+---
+
+# 15. Status Atual
+
+O projeto encontra-se funcional para:
+
+- Autenticação;
+- CRUD de workspaces;
+- CRUD de cards;
+- Notas por workspace;
+- Persistência SQLite;
+- Organização Kanban.
+
+As próximas etapas concentram-se na evolução para uma plataforma mais completa voltada à gestão de projetos de segurança ofensiva.
