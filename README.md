@@ -4,6 +4,24 @@ PENKAN e uma plataforma web em PHP para organizar projetos de pentest em formato
 
 O projeto foi feito com PHP, SQLite, HTML, CSS e JavaScript puro, pensando em uso local ou em um servidor PHP simples.
 
+[Protótipo BASE no Figma](https://www.figma.com/design/OJsw4eMHVuVOVPupTlguys/Penkan?node-id=0-1&t=3PO3rn9GtcPyx47i-1)
+
+---
+
+## Como rodar?
+
+```bash
+git clone https://github.com/rianeduardo/PENKAN.git
+```
+
+```bash
+php -S localhost:porta
+```
+
+E pronto! O banco de dados é local, feito com SQLite
+
+---
+
 ## Funcionalidades
 
 - Cadastro e login de usuario.
