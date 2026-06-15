@@ -21,7 +21,7 @@ if (!empty($_SESSION['user_id'])) {
         <div class="itensHeader">
             <nav>
                 <ul>
-                    <li><a href="#">Recursos</a></li>
+                    <li><a href="index.php#recursos">Recursos</a></li>
                     <li><a href="index.php#fluxo">Como funciona</a></li>
                     <li><a href="index.php#contato">Contato</a></li>
                     <li><a href="workspaces.php">Workspaces</a></li>

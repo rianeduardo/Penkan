@@ -1,12 +1,6 @@
 <?php
 require_once __DIR__ . '/db.php';
-if (session_status() === PHP_SESSION_NONE)
-    session_start();
-if (empty($_SESSION['user_id'])) {
-    header('Location: login.php');
-    exit;
-}
-$user_id = $_SESSION['user_id'];
+require_once __DIR__ . '/verifica_sessao.php';
 $stmt = DB::pdo()->prepare('SELECT * FROM workspaces WHERE user_id = ? ORDER BY created_at DESC');
 $stmt->execute([$user_id]);
 $workspaces = $stmt->fetchAll(PDO::FETCH_ASSOC);
@@ -32,7 +26,7 @@ include __DIR__ . '/components/header.php';
     </div>
 
     <div class="novoWorkspace">
-        <form class="formWorkspace" action="create_workspace.php" method="post">
+        <form class="formWorkspace" action="actions/create_workspace.php" method="post">
             <input
                 type="text"
                 name="title"
@@ -64,6 +58,11 @@ include __DIR__ . '/components/header.php';
 
                 <div class="workspaceCard">
 
+                    <a
+                        class="workspaceCardLink"
+                        href="workspace.php?id=<?php echo $w['id']; ?>"
+                        aria-label="Abrir workspace <?php echo htmlspecialchars($w['title']); ?>"></a>
+
                     <div class="workspaceHeader">
 
                         <a
@@ -93,7 +92,7 @@ include __DIR__ . '/components/header.php';
 
                         <?php if (($w['status'] ?? 'active') === 'active'): ?>
 
-                            <form action="update_workspace_status.php" method="post">
+                            <form action="actions/update_workspace_status.php" method="post">
                                 <input
                                     type="hidden"
                                     name="workspace_id"
@@ -111,7 +110,7 @@ include __DIR__ . '/components/header.php';
 
                         <?php else: ?>
 
-                            <form action="update_workspace_status.php" method="post">
+                            <form action="actions/update_workspace_status.php" method="post">
                                 <input
                                     type="hidden"
                                     name="workspace_id"
@@ -130,7 +129,7 @@ include __DIR__ . '/components/header.php';
                         <?php endif; ?>
 
                         <form
-                            action="delete_workspace.php"
+                            action="actions/delete_workspace.php"
                             method="post"
                             onsubmit="return confirm('Deletar workspace e todos os cards?');">
 

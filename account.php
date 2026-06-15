@@ -1,7 +1,6 @@
 <?php
 require_once __DIR__ . '/db.php';
-if (session_status() === PHP_SESSION_NONE) session_start();
-if (empty($_SESSION['user_id'])) { header('Location: login.php'); exit; }
+require_once __DIR__ . '/verifica_sessao.php';
 $stmt = DB::pdo()->prepare('SELECT id, name, username, email, specialty, created_at FROM users WHERE id = ? LIMIT 1');
 $stmt->execute([$_SESSION['user_id']]);
 $user = $stmt->fetch(PDO::FETCH_ASSOC);
@@ -87,7 +86,7 @@ include __DIR__ . '/components/header.php';
                     <h2>Atualizar Perfil</h2>
                 </div>
 
-                <form class="formCadastro" action="update_account.php" method="post">
+                <form class="formCadastro" action="actions/update_account.php" method="post">
 
                     <input
                         class="entrada"
@@ -137,7 +136,7 @@ include __DIR__ . '/components/header.php';
                     <h2>Alterar Senha</h2>
                 </div>
 
-                <form class="formCadastro" action="update_account.php" method="post">
+                <form class="formCadastro" action="actions/update_account.php" method="post">
 
                     <input
                         class="entrada"

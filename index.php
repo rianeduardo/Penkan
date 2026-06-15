@@ -24,7 +24,7 @@ include('./components/header.php');
                 e entregue relatórios como um profissional.</p>
             <div class="botoesHero">
                 <a href="registro.php" class="btnPrimario">> Começar agora</a>
-                <a href="#" class="btnSecundario">Saiba mais ></a>
+                <a href="#fluxo" class="btnSecundario">Saiba mais ></a>
             </div>
         </div>
     </main>

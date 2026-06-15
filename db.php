@@ -1,4 +1,9 @@
 <?php
+if (realpath($_SERVER['SCRIPT_FILENAME'] ?? '') === __FILE__) {
+    http_response_code(403);
+    exit('Acesso negado.');
+}
+
 class DB {
     private static $pdo = null;
 

@@ -827,6 +827,7 @@ hr {
   border: 1px solid var(--bordas);
   padding: 24px;
   transition: all 0.3s ease;
+  position: relative;
 }
 
 .workspaceCard:hover {
@@ -846,6 +847,8 @@ hr {
   text-decoration: none;
   font-size: 20px;
   font-weight: 700;
+  position: relative;
+  z-index: 2;
 }
 
 .workspaceTitulo:hover {
@@ -886,6 +889,14 @@ hr {
   gap: 10px;
   margin-top: 20px;
   flex-wrap: wrap;
+  position: relative;
+  z-index: 2;
+}
+
+.workspaceCardLink {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
 }
 
 .workspaceAcoes form {
@@ -917,4 +928,287 @@ hr {
   text-align: center;
   color: #888;
   background: rgba(0, 0, 0, 0.2);
+}
+
+/* PAGINA WORKSPACE */
+
+.paginaWorkspace {
+  min-height: 100vh;
+  padding: 35px 80px;
+  background: var(--fundo);
+}
+
+.workspaceHero {
+  display: flex;
+  justify-content: space-between;
+  gap: 20px;
+  align-items: flex-start;
+  background: rgba(0, 0, 0, 0.35);
+  border: 1px solid var(--bordas);
+  padding: 28px;
+  margin-bottom: 24px;
+}
+
+.workspaceHero h2 {
+  font-size: 32px;
+  color: var(--texto);
+  margin-bottom: 8px;
+}
+
+.workspaceHero p {
+  color: #bacbb4;
+  font-family: "Inter", sans-serif;
+  line-height: 1.5;
+}
+
+.btnWorkspaceCriar,
+.workspaceNotas button,
+.modalCardConteudo button,
+.kanbanAcoes button {
+  background: var(--cor-principal);
+  color: #000;
+  border: none;
+  cursor: pointer;
+  font-weight: 700;
+  transition: all 0.3s ease;
+}
+
+.btnWorkspaceCriar {
+  padding: 12px 24px;
+  white-space: nowrap;
+}
+
+.btnWorkspaceCriar:hover,
+.workspaceNotas button:hover,
+.modalCardConteudo button:hover,
+.kanbanAcoes button:hover {
+  background: #119133;
+}
+
+.kanbanBoard {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(260px, 1fr));
+  gap: 18px;
+  align-items: flex-start;
+}
+
+.kanbanColumn {
+  min-height: 360px;
+  background: #000;
+  border: 1px solid var(--bordas);
+  padding: 18px;
+}
+
+.kanbanColumnHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 16px;
+}
+
+.kanbanColumnHeader h3 {
+  color: var(--texto);
+  font-size: 18px;
+}
+
+.kanbanColumnHeader span {
+  color: var(--cor-principal);
+  border: 1px solid var(--bordas);
+  padding: 4px 10px;
+  font-size: 12px;
+}
+
+.kanbanCard {
+  border: 1px solid var(--bordas);
+  background: rgba(12, 22, 11, 0.65);
+  padding: 16px;
+  margin-bottom: 14px;
+}
+
+.kanbanCard:hover {
+  border-color: var(--cor-principal);
+}
+
+.kanbanCardTopo {
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+  align-items: flex-start;
+  margin-bottom: 10px;
+}
+
+.kanbanCardTopo h4 {
+  color: var(--texto);
+  font-size: 16px;
+  line-height: 1.3;
+}
+
+.kanbanCardTopo span {
+  color: var(--cor-principal);
+  border: 1px solid var(--bordas);
+  padding: 3px 8px;
+  font-size: 11px;
+  text-transform: uppercase;
+  flex: 0 0 auto;
+}
+
+.kanbanCard small {
+  display: block;
+  color: #777;
+  font-size: 12px;
+  margin-bottom: 8px;
+}
+
+.kanbanCard p {
+  color: #bacbb4;
+  font-family: "Inter", sans-serif;
+  font-size: 14px;
+  line-height: 1.5;
+  margin-bottom: 12px;
+}
+
+.kanbanAcoes {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.kanbanAcoes button {
+  padding: 8px 10px;
+  font-size: 12px;
+}
+
+.kanbanAcoes button.delete {
+  background: transparent;
+  border: 1px solid #ff4d4d;
+  color: #ff4d4d;
+}
+
+.kanbanAcoes button.delete:hover {
+  background: #ff4d4d;
+  color: #000;
+}
+
+.workspaceVazio {
+  border: 1px dashed var(--bordas);
+  padding: 20px;
+  color: #888;
+  text-align: center;
+  font-family: "Inter", sans-serif;
+}
+
+.workspaceNotas {
+  margin-top: 24px;
+  background: #000;
+  border: 1px solid var(--bordas);
+  padding: 24px;
+}
+
+.workspaceNotas textarea,
+.modalCardConteudo input,
+.modalCardConteudo textarea,
+.modalCardConteudo select {
+  width: 100%;
+  background: var(--fundo);
+  border: 1px solid var(--bordas);
+  color: var(--texto);
+  padding: 12px;
+  font-size: 14px;
+}
+
+.workspaceNotas textarea:focus,
+.modalCardConteudo input:focus,
+.modalCardConteudo textarea:focus,
+.modalCardConteudo select:focus {
+  outline: none;
+  border-color: var(--cor-principal);
+}
+
+.workspaceNotas textarea {
+  min-height: 160px;
+  resize: vertical;
+  margin-bottom: 12px;
+}
+
+.workspaceNotas button {
+  padding: 12px 20px;
+}
+
+.modalCard {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.72);
+  z-index: 9999;
+  padding: 35px;
+}
+
+.modalCardConteudo {
+  max-width: 620px;
+  margin: 5vh auto;
+  background: #000;
+  border: 1px solid var(--bordas);
+  padding: 24px;
+}
+
+.modalCardConteudo form {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.modalCardConteudo textarea {
+  min-height: 110px;
+  resize: vertical;
+}
+
+.modalCardConteudo label {
+  color: #bacbb4;
+  font-size: 13px;
+}
+
+.modalCardConteudo select option {
+  background: #000;
+  color: var(--texto);
+}
+
+.modalCardAcoes {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.modalCardAcoes button {
+  padding: 12px 20px;
+}
+
+.modalCardAcoes button[type="button"] {
+  background: transparent;
+  color: var(--texto);
+  border: 1px solid var(--bordas);
+}
+
+.modalCardAcoes button[type="button"]:hover {
+  border-color: var(--cor-principal);
+  color: var(--cor-principal);
+  background: transparent;
+}
+
+@media (max-width: 1100px) {
+  .paginaWorkspace {
+    padding-left: 35px;
+    padding-right: 35px;
+  }
+
+  .kanbanBoard {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 720px) {
+  .workspaceHero {
+    flex-direction: column;
+    align-items: stretch;
+  }
 }
