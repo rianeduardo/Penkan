@@ -1,14 +1,23 @@
 <?php
 require_once __DIR__ . '/db.php';
+
+// Inicia sessão
 if (session_status() === PHP_SESSION_NONE)
     session_start();
+
+// Array para erros
 $errors = [];
+
+// Se estivermos num POST
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    // Pega dados do form
     $username = trim($_POST['username'] ?? '');
     $password = $_POST['password'] ?? '';
+
+    // Checagem de usuário e senha vazios
     if ($username === '' || $password === '') {
         $errors[] = 'Preencha usuário e senha.';
-    } else {
+    } else { // Prepara um select para checar credenciais pelo username
         $stmt = DB::pdo()->prepare('SELECT id, password, name, username FROM users WHERE username = ? LIMIT 1');
         $stmt->execute([$username]);
         $u = $stmt->fetch(PDO::FETCH_ASSOC);

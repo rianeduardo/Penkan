@@ -76,6 +76,13 @@ header {
 .logoArea img {
   width: 32px;
   height: 32px;
+  animation: giro 10s infinite linear;
+}
+
+@keyframes giro {
+  100% {
+    transform: rotate(360deg);
+  }
 }
 
 .logoArea h1 {

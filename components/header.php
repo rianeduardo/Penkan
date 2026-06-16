@@ -5,11 +5,14 @@ require_once __DIR__ . '/../db.php';
 
 $user = null;
 
+// Carrega os dados do usuário se a sessão não tiver user_id vazio e guarda em $user
+
 if (!empty($_SESSION['user_id'])) {
     $stmt = DB::pdo()->prepare('SELECT id, name, email, username, specialty FROM users WHERE id = ? LIMIT 1');
     $stmt->execute([$_SESSION['user_id']]);
     $user = $stmt->fetch(PDO::FETCH_ASSOC);
 }
+
 ?>
 
     <link rel="shortcut icon" href="./assets/logoPenkan.svg" type="image/x-icon">

@@ -1,10 +1,16 @@
 <?php
 require_once __DIR__ . '/db.php';
 require_once __DIR__ . '/verifica_sessao.php';
+
+// Carrega os dados do usuário
 $stmt = DB::pdo()->prepare('SELECT id, name, username, email, specialty, created_at FROM users WHERE id = ? LIMIT 1');
 $stmt->execute([$_SESSION['user_id']]);
 $user = $stmt->fetch(PDO::FETCH_ASSOC);
+
+// Não deixa dar erro (Warning: Trying to access array offset on value of type bool), já que usuário falso do fetch não permite a gente manipular como array
 if (!$user) $user = [];
+
+// Função pra retornar os dados independentes
 function h($v) { return htmlspecialchars((string)($v ?? '')); }
 include __DIR__ . '/components/header.php';
 ?>
