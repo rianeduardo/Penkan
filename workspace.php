@@ -217,4 +217,18 @@ function renderCards($cards, $emptyMessage) {
     <script src="https://kit.fontawesome.com/9e07d1881e.js" crossorigin="anonymous"></script>
 </body>
 
+<script src="https://unpkg.com/lenis@1.3.23/dist/lenis.min.js"></script> 
+
+<script>
+    // Initialize Lenis
+const lenis = new Lenis({
+  autoRaf: true,
+});
+
+// Listen for the scroll event and log the event data
+lenis.on('scroll', (e) => {
+  console.log(e);
+});
+</script>
+
 </html>
