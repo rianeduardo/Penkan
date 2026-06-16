@@ -142,7 +142,7 @@ include('./components/header.php');
                     <path
                         d="M480-96q-79 0-149-30T209-208q-52-52-82-122T96-480q0-79 30-149t82-122q52-52 122-82t149-30q110 0 198.5 57.5T810-648H696v72h216v-216h-72v91q-54-74-145.5-118T480-864q-97 0-183 36.5T146.5-727Q86-666 50-580T14-480q0 97 36.5 183T146-146.5Q206-86 292-50t188 36q115 0 207.5-50.5T840-204l-62-36q-42 72-115.5 112T480-96Z" />
                 </svg>
-                <h2>Histórico e uditoria em tempo real</h2>
+                <h2>Histórico e auditoria em tempo real</h2>
                 <p>Acompanhe alterações, movimentações e atualizações do projeto com rastreabilidade completa das atividades.</p>
             </div>
 
@@ -267,6 +267,7 @@ include('./components/footer.php')
         // Initialize Lenis
 const lenis = new Lenis({
   autoRaf: true,
+  anchors: true,
 });
 
 // Listen for the scroll event and log the event data
